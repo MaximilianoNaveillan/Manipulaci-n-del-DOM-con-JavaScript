@@ -42,5 +42,8 @@ document.querySelector('#miEnlace').setAttribute('href', 'https://homer.sii.cl')
 // ---- 3 .- Data ATRIBUIBUTES (dataset) ------
 
 const btn = document.getElementById('miBoton');
+
 btn.dataset.estado = 'inactivo';
-console.log('ID del boton:', btn.database.id);
+
+console.log('ID del boton:', btn.dataset.id);
+console.log('Estado del boton:', btn.dataset.estado);
