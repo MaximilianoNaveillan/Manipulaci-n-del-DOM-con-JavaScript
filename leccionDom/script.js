@@ -21,9 +21,26 @@ console.log('Tatal <li>: ', items.length);
 // querySelector (El primero) y queryselectorAll(Todos)
 // uso de argumentos class = ".nombre-de-la-clase", id = "#id", tag="<etiqueta>"
 const primerelemento = document.querySelector('.elemento');
-const todosLosElementos = document.querySelectorAll('.elemento');
+const todosLosElementos = document.querySelectorAll('.elemento'); // retorna  --> un array []
 
 todosLosElementos.forEach((el, i) => console.log('Nodo', i, el.innerText));
 console.log('solo el primer elemento', primerelemento.innerText);
 
-// ------- MODIFICACIÓN DE ATRIBUTOS
+// ------- 2.- MODIFICACIÓN DE ATRIBUTOS CONTENIDO ----
+// Propiedades directas:
+const img = document.getElementById('miImagen');
+img.src = 'https://pics.filmaffinity.com/the_penguins_of_madagascar-675250483-large.jpg';
+img.style = 'width:200px';
+img.alt = 'Pinguino de Madagascar';
+
+// tectContent (solo texto)
+document.getElementById('miElemento').textContent = 'Contenido actualizado';
+
+// setAtribute (Ideal para atributos personalizados)
+document.querySelector('#miEnlace').setAttribute('href', 'https://homer.sii.cl');
+
+// ---- 3 .- Data ATRIBUIBUTES (dataset) ------
+
+const btn = document.getElementById('miBoton');
+btn.dataset.estado = 'inactivo';
+console.log('ID del boton:', btn.database.id);
