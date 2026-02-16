@@ -2,7 +2,6 @@
  *  PROGRAMACIÓN ASÍNCRONA EN JAVASCRIPT
  *  ---------------------------------------------------------------
  *  Resumen explicativo + ejemplos prácticos
- *  Autor: Demo educativa
  **********************************************************************/
 
 /**********************************************************************
@@ -123,28 +122,15 @@ console.log('\n===== EJEMPLO 6: Async / Await =====');
 /*
 ¿Por qué JavaScript necesita programación asíncrona?
 
-Porque es monohilo. Si bloqueamos el hilo principal,
-la aplicación web se congela.
+
 
 ¿Cómo afecta el código bloqueante en una web?
 
-- Congela la interfaz
-- Mala experiencia de usuario
-- No responde a eventos
+
 
 ¿Cuándo usar cada uno?
 
-Callbacks:
-- Código simple o APIs antiguas
 
-Promesas:
-- Manejo estructurado de asincronía
-- Encadenamiento
-
-Async/Await:
-- Código moderno
-- Mejor legibilidad
-- Proyectos profesionales
 
 ¿Por qué async/await es más legible?
 Porque elimina el encadenamiento de .then()
@@ -275,30 +261,16 @@ console.log('\n===== EJEMPLO 6: Async / Await =====');
 /*
 ¿Por qué JavaScript necesita programación asíncrona?
 
-Porque es monohilo. Si bloqueamos el hilo principal,
-la aplicación web se congela.
+
 
 ¿Cómo afecta el código bloqueante en una web?
 
-- Congela la interfaz
-- Mala experiencia de usuario
-- No responde a eventos
+
 
 ¿Cuándo usar cada uno?
 
-Callbacks:
-- Código simple o APIs antiguas
 
-Promesas:
-- Manejo estructurado de asincronía
-- Encadenamiento
-
-Async/Await:
-- Código moderno
-- Mejor legibilidad
-- Proyectos profesionales
 
 ¿Por qué async/await es más legible?
-Porque elimina el encadenamiento de .then()
-y permite leer el flujo de arriba hacia abajo.
+
 */
