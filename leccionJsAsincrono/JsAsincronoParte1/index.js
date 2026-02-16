@@ -25,11 +25,26 @@ Si una tarea tarda mucho, bloquea todo.
 */
 
 // ⏳ Código Bloqueante (Síncrono)
+function ejemploBloqueante() {
+  console.log('Inicio bloqueante');
+  for (let i = 0; i < 1e9; i++) {} // simula tarea pesada
+  console.log('Fin Bloqueante');
+}
 
 // ⚡ Código Asíncrono (No bloqueante)
+function ejemploAsincrono() {
+  console.log('Inicio asíncrono');
+
+  setTimeout(() => {
+    console.log('Tarea asíncrona completada');
+  }, 2000);
+
+  console.log('Fin asíncrono');
+}
 
 // Descomenta uno a la vez para probar:
 // ejemploBloqueante();
+ejemploAsincrono();
 
 /*
 💡 Pregunta:
@@ -46,6 +61,19 @@ Si una tarea tarda mucho, bloquea todo.
 
 console.log('\n===== EJEMPLO 2: Callbacks =====');
 
+function procesarDatos(callback) {
+  console.log('Procesando datos...');
+
+  setTimeout(() => {
+    console.log('Datos listos');
+    callback();
+  }, 2000);
+}
+
+procesarDatos(() => {
+  console.log('Callback ejecutado');
+});
+
 /*
 💡 Pregunta:
 ¿Qué pasaría si eliminamos el setTimeout?
@@ -60,7 +88,35 @@ console.log('\n===== EJEMPLO 2: Callbacks =====');
 
 console.log('\n===== EJEMPLO 3: Callback Hell =====');
 
+function tarea1(callback) {
+  setTimeout(() => {
+    console.log('Tarea 1 completada');
+    callback();
+  }, 1000);
+}
+
+function tarea2(callback) {
+  setTimeout(() => {
+    console.log('Tarea 2 completada');
+    callback();
+  }, 1000);
+}
+
+function tarea3(callback) {
+  setTimeout(() => {
+    console.log('Tarea 3 completada');
+    callback();
+  }, 1000);
+}
+
 // Anidación (Callback Hell)
+tarea1(() => {
+  tarea2(() => {
+    tarea3(() => {
+      console.log('Todas las tareas finalizadas');
+    });
+  });
+});
 
 /*
 💡 Problema:
@@ -80,6 +136,24 @@ Mientras más tareas agregamos, más difícil de leer se vuelve.
 
 console.log('\n===== EJEMPLO 4: Promesas =====');
 
+function obtenerDatos() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const exito = false;
+
+      if (exito) {
+        resolve('Datos obtenidos correctamente');
+      } else {
+        reject('Error al oblener los datos');
+      }
+    }, 2000);
+  });
+}
+
+obtenerDatos()
+  .then((mensaje) => console.log(mensaje))
+  .catch((error) => console.log(error));
+
 /*
 ✅ Ventajas sobre callbacks:
 - Menos anidamiento
@@ -90,6 +164,21 @@ console.log('\n===== EJEMPLO 4: Promesas =====');
 /**********************************************************************
  * 5️⃣ ENCADENAMIENTO DE PROMESAS
  **********************************************************************/
+
+function tarea(numero) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Tarea ${numero} completada`);
+      resolve();
+    }, 1000);
+  });
+}
+
+tarea(1)
+  .then(() => tarea(2))
+  .then(() => tarea(3))
+  .then(() => console.log('Todas las tareas finalizadas'))
+  .catch((error) => console.error('Error: ', error));
 
 console.log('\n===== EJEMPLO 5: Encadenamiento =====');
 
@@ -108,6 +197,22 @@ Se ejecuta automáticamente el .catch()
 
 console.log('\n===== EJEMPLO 6: Async / Await =====');
 
+async function ejecutarTareas() {
+  try {
+    console.log('Inicio');
+
+    await tarea(1);
+    await tarea(2);
+    await tarea(3);
+
+    console.log('Todas las tareas finalizadas');
+  } catch (error) {
+    console.error('Error en código:', error);
+  }
+}
+
+ejecutarTareas();
+
 /*
 💡 Diferencia con Promesas:
 - Más legible
@@ -122,13 +227,31 @@ console.log('\n===== EJEMPLO 6: Async / Await =====');
 /*
 ¿Por qué JavaScript necesita programación asíncrona?
 
-
+Porque es monohilo. si bloqueamos hilo prncipal, la aplicación se congela.
 
 ¿Cómo afecta el código bloqueante en una web?
 
-
+- Congela la interfaz
+- Demora en carga de archivos.
+- La web se realentiza.
+- No responde a eventos
 
 ¿Cuándo usar cada uno?
+
+Callbacks:
+- Poco ocntrol en muchas tareas.
+- Código simple o APIS antiguas.
+
+Promesas ( then{} catch()):
+- Encadenamiento
+- Maejo estructurado de asincronía
+- Mejor lejibilidad
+
+Async/await:
+- Código mas moderno.
+- Encapsulamiento.
+- Mejor lejibilidad.
+- Proyectos profecionales.
 
 
 
@@ -140,7 +263,7 @@ y permite leer el flujo de arriba hacia abajo.
  *  PROGRAMACIÓN ASÍNCRONA EN JAVASCRIPT
  *  ---------------------------------------------------------------
  *  Resumen explicativo + ejemplos prácticos
- *  Autor: Demo educativa
+ *  Autor: Chorte Vue
  **********************************************************************/
 
 /**********************************************************************
