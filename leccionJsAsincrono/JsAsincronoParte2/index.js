@@ -23,28 +23,10 @@ Se ejecuta línea por línea.
 Si una tarea tarda, bloquea todo el programa.
 */
 
-console.log('Inicio síncrono');
-
-function tareaPesada() {
-  for (let i = 0; i < 1e9; i++) {} // Simula tarea larga
-  console.log('Tarea pesada terminada');
-}
-
-tareaPesada();
-console.log('Fin síncrono');
-
 /*
 ASÍNCRONO:
 Permite ejecutar tareas largas sin bloquear el flujo principal.
 */
-
-console.log('Inicio asíncrono');
-
-setTimeout(() => {
-  console.log('Tarea ejecutada después de 2 segundos');
-}, 2000);
-
-console.log('Fin asíncrono');
 
 /* ============================================================
 2️⃣ CREANDO Y USANDO UNA PROMESA
@@ -58,31 +40,10 @@ Una Promesa representa un valor que puede estar:
 - Rechazada (rejected)
 */
 
-const miPromesa = new Promise((resolve, reject) => {
-  // Simulamos una operación asíncrona
-  setTimeout(() => {
-    const exito = Math.random() > 0.5; // 50% éxito o error
-
-    if (exito) {
-      resolve('✅ La promesa fue resuelta correctamente');
-    } else {
-      reject('❌ La promesa fue rechazada');
-    }
-  }, 1500);
-});
-
 /*
 .then() se ejecuta si la promesa se resuelve.
 .catch() captura el error si se rechaza.
 */
-
-miPromesa
-  .then((resultado) => {
-    console.log('THEN:', resultado);
-  })
-  .catch((error) => {
-    console.error('CATCH:', error);
-  });
 
 /* ============================================================
 3️⃣ ASYNC / AWAIT
@@ -93,34 +54,6 @@ miPromesa
 async convierte una función en asíncrona.
 await detiene la ejecución hasta que la promesa se resuelva.
 */
-
-function obtenerDatosSimulados() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const exito = Math.random() > 0.5;
-
-      if (exito) {
-        resolve('📦 Datos recibidos correctamente');
-      } else {
-        reject('🚨 Error al obtener los datos');
-      }
-    }, 2000);
-  });
-}
-
-async function ejecutarAsyncAwait() {
-  try {
-    console.log('⏳ Esperando datos...');
-
-    const resultado = await obtenerDatosSimulados();
-
-    console.log('RESULTADO:', resultado);
-  } catch (error) {
-    console.error('ERROR CAPTURADO:', error);
-  }
-}
-
-ejecutarAsyncAwait();
 
 /* ============================================================
 4️⃣ MANEJO DE ERRORES CON TRY/CATCH
