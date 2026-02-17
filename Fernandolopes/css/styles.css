@@ -1,198 +1,158 @@
-/* RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* TaskFlow - Estilos base con colores */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
-  padding: 2rem;
 }
 
-/* HEADER */
-.header {
+h1 {
   text-align: center;
-  color: white;
-  margin-bottom: 3rem;
+  margin-bottom: 24px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.header h1 {
-  font-size: 3.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* FORM */
-.form {
+/* Formulario */
+form {
   display: flex;
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto 3rem;
+  gap: 8px;
+  margin-bottom: 16px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#input-tarea {
+input[type='text'] {
   flex: 1;
-  padding: 1.25rem 1.5rem;
-  border: 2px solid #e1e8ed;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
   transition: border-color 0.3s ease;
 }
 
-#input-tarea:focus {
+input[type='text']:focus {
   outline: none;
   border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-#input-tarea.error {
-  border-color: #e74c3c;
-  animation: shake 0.5s;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-.form button {
-  padding: 1.25rem 2.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
+button {
+  padding: 12px 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.form button:hover {
+button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-/* LISTA TAREAS */
-.lista-tareas {
-  max-width: 800px;
-  margin: 0 auto;
+/* Lista de tareas */
+ul {
   list-style: none;
+  padding: 0;
 }
 
 li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  margin-bottom: 1.5rem;
-  padding: 1.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
-li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-/* ESTADOS TAREA */
-.pendiente {
-  border-left: 5px solid #4299e1;
-}
-
-.completada {
-  opacity: 0.8;
-  border-left: 5px solid #48bb78;
-}
-
-.completada span {
-  text-decoration: line-through;
-}
-
-/* DESCRIPCION */
 li span {
   flex: 1;
-  font-size: 1.2rem;
   font-weight: 500;
-  margin-right: 1rem;
+  color: #1f2937;
 }
 
-/* BOTONES ACCIONES */
-.acciones {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.acciones button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
+/* Botones de acción */
+li button {
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: 600;
   transition: all 0.2s ease;
-  font-size: 0.95rem;
+  border: none;
 }
 
-.btn-completar {
-  background: #48bb78;
+/* Botón cambiar estado (verde) */
+li button:nth-child(2) {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
 }
 
-.btn-completar:hover {
-  background: #38a169;
-  transform: scale(1.05);
+li button:nth-child(2):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
-.btn-editar {
-  background: #ed8936;
+/* Botón eliminar (rojo) */
+li button:nth-child(3) {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
 }
 
-.btn-editar:hover {
-  background: #dd6b20;
-  transform: scale(1.05);
+li button:nth-child(3):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
 
-.btn-eliminar {
-  background: #f56565;
-  color: white;
+/* Estados visuales */
+li.completada {
+  opacity: 0.85;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
 }
 
-.btn-eliminar:hover {
-  background: #e53e3e;
-  transform: scale(1.05);
+li.completada span {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.95);
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
-  .form {
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
     flex-direction: column;
   }
+
   li {
     flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  li button {
+    margin-top: 4px;
   }
 }

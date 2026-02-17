@@ -2,31 +2,25 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TaskFlow - Proyecto Integrador Módulo 5</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>TaskFlow: Gestor de Tareas</title>
+    <link
+      rel="stylesheet"
+      href="/Manipulaci-n-del-DOM-con-JavaScript/Fernandolopes/css/styles.css"
+    />
   </head>
   <body>
-    <!-- HEADER -->
-    <header class="header">
-      <h1>🚀 TaskFlow</h1>
-      <p>Gestión de Tareas - POO + DOM + ES6+</p>
-    </header>
+    <h1>TaskFlow: Gestor de Tareas</h1>
 
-    <!-- FORMULARIO -->
-    <form id="form-tarea" class="form">
-      <input
-        type="text"
-        id="input-tarea"
-        placeholder="Escribe una nueva tarea..."
-        autocomplete="off"
-      />
-      <button type="submit">Agregar Tarea</button>
+    <!-- Formulario para agregar nuevas tareas -->
+    <form id="formulario">
+      <input type="text" id="tarea" placeholder="Agregar nueva tarea" required />
+      <button type="submit">Agregar</button>
     </form>
 
-    <!-- LISTA TAREAS -->
-    <ul id="lista-tareas" class="lista-tareas"></ul>
+    <!-- Lista donde se mostrarán las tareas -->
+    <ul id="lista-tareas"></ul>
 
+    <!-- Enlazamos el JavaScript -->
     <script src="app.js"></script>
   </body>
 </html>
