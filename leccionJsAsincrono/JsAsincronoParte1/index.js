@@ -5,6 +5,7 @@
  **********************************************************************/
 
 /**********************************************************************
+ * JavaScript Asíncrono - Parte I
  * 1️⃣ ¿Qué es la Programación Asíncrona?
  *
  * Es un modelo donde las operaciones NO bloquean el flujo principal.
