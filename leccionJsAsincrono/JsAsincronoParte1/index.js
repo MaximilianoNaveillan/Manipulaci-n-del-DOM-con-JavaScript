@@ -25,11 +25,26 @@ Si una tarea tarda mucho, bloquea todo.
 */
 
 // ⏳ Código Bloqueante (Síncrono)
+function ejemplobloqueante(){
+    console.log("Inicio Bloqueante");
+    for (let i=0;i<1e9; i++)() // simula tarea pesada
+        console.log("Fin Bloqueante");
+}
+
+
 
 // ⚡ Código Asíncrono (No bloqueante)
+function ejemploAsincrono(){
+    console.log("iNICIO Asincrono");
 
+    setTimeout(()=>{
+        console.log("Tarea Asincrona completada");
+    }, 2000);
+    }
+}
 // Descomenta uno a la vez para probar:
 // ejemploBloqueante();
+ejemploAsincrono();
 
 /*
 💡 Pregunta:
@@ -46,6 +61,17 @@ Si una tarea tarda mucho, bloquea todo.
 
 console.log('\n===== EJEMPLO 2: Callbacks =====');
 
+function procesarDatos(callback){
+    console.log("Procesando Datos...");
+
+    setTimeout(()=>{
+        console.log("Datos Listos");
+        callback();
+    }, 2000);        
+}
+
+
+
 /*
 💡 Pregunta:
 ¿Qué pasaría si eliminamos el setTimeout?
@@ -60,8 +86,38 @@ console.log('\n===== EJEMPLO 2: Callbacks =====');
 
 console.log('\n===== EJEMPLO 3: Callback Hell =====');
 
-// Anidación (Callback Hell)
 
+
+function tarea1(callback){
+    setTimeout(()=>{
+        console.log("Tarea 1 Completada");
+        callback();
+    }, 1000)
+}
+
+function tarea2(callback){
+    setTimeout(()=>{
+        console.log("Tarea 2 Completada");
+        callback();
+    }, 1000)
+    
+}
+
+function tarea3(callback){
+    setTimeout(()=>{
+        console.log("Tarea 3 Completada");
+        callback();
+    }, 1000)
+}
+
+// Anidación (Callback Hell)
+tarea1(()=>{
+    tarea2(()=>{
+        tarea3()=>{
+            console.log("Todas las tareas finalizadas");
+        };
+    });
+});
 /*
 💡 Problema:
 Mientras más tareas agregamos, más difícil de leer se vuelve.
@@ -80,6 +136,24 @@ Mientras más tareas agregamos, más difícil de leer se vuelve.
 
 console.log('\n===== EJEMPLO 4: Promesas =====');
 
+function obtenerDatos(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            const exito = true;
+
+            if(exito){
+                resolve("Datos obtenidos correctamente")
+            }else {
+                reject("Error al obtener los datos")
+            }
+        }, 2000)
+    })
+}
+
+obtenerDatos()
+    .then((mensaje)=>console.log(mensaje))
+    .catch(error) =>console.log(error);
+}
 /*
 ✅ Ventajas sobre callbacks:
 - Menos anidamiento
@@ -91,6 +165,15 @@ console.log('\n===== EJEMPLO 4: Promesas =====');
  * 5️⃣ ENCADENAMIENTO DE PROMESAS
  **********************************************************************/
 
+function tarea(numero){
+    return new Promise((resolved)=>{
+        setTimeout(()=>{
+            console.log('Tarea ${numero} completada');
+            resolved();        
+        },1000);        
+    });
+}
+
 console.log('\n===== EJEMPLO 5: Encadenamiento =====');
 
 /*
@@ -98,6 +181,12 @@ console.log('\n===== EJEMPLO 5: Encadenamiento =====');
 ¿Qué pasaría si una promesa falla?
 Se ejecuta automáticamente el .catch()
 */
+
+
+
+
+
+
 
 /**********************************************************************
  * 6️⃣ ASYNC / AWAIT
@@ -108,6 +197,14 @@ Se ejecuta automáticamente el .catch()
 
 console.log('\n===== EJEMPLO 6: Async / Await =====');
 
+function ejecutartarea(){
+    try {
+        console.log("Inicio");
+
+        await tarea(1);
+        await tarea
+    }
+}
 /*
 💡 Diferencia con Promesas:
 - Más legible
