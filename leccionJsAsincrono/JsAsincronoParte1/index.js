@@ -42,11 +42,6 @@ function ejemploAsincrono() {
   console.log('Fin asíncrono');
 }
 
-    setTimeout(()=>{
-        console.log("Tarea Asincrona completada");
-    }, 2000);
-    }
-}
 // Descomenta uno a la vez para probar:
 // ejemploBloqueante();
 ejemploAsincrono();
@@ -192,12 +187,6 @@ console.log('\n===== EJEMPLO 5: Encadenamiento =====');
 ¿Qué pasaría si una promesa falla?
 Se ejecuta automáticamente el .catch()
 */
-
-
-
-
-
-
 
 /**********************************************************************
  * 6️⃣ ASYNC / AWAIT
