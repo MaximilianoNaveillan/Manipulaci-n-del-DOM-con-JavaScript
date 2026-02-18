@@ -22,11 +22,28 @@ SÍNCRONO:
 Se ejecuta línea por línea. 
 Si una tarea tarda, bloquea todo el programa.
 */
+console.log('Inicio síncrono');
+
+function tareaPesada() {
+  for (let i = 0; i < 1e9; i++) {} // Simula tarea pesada
+  console.log('Tarea pesada terminada');
+}
+
+tareaPesada();
+console.log('Fin síncrono');
 
 /*
 ASÍNCRONO:
 Permite ejecutar tareas largas sin bloquear el flujo principal.
 */
+
+console.log('Inicio asíncrono');
+
+setTimeout(() => {
+  console.log('Tarea ejecutada después de 2 segundos');
+}, 2000);
+
+console.log('Fin asíncrono');
 
 /* ============================================================
 2️⃣ CREANDO Y USANDO UNA PROMESA
@@ -39,11 +56,30 @@ Una Promesa representa un valor que puede estar:
 - Resuelta (fulfilled)
 - Rechazada (rejected)
 */
+const miPromesa = new Promise((resolve, reject) => {
+  console.log('🕗 Estado inicial: pending...'); // Pending
+  // Simular una operación asíncrona
+  setTimeout(() => {
+    const exito = Math.random() > 0.5; // 50% exito (true) o error (false)
+    if (exito) {
+      resolve(`😊 La promesa fue resuelta correctamente`);
+    } else {
+      reject(`✖️ La promesa fue rechazada`);
+    }
+  }, 1500);
+});
 
 /*
 .then() se ejecuta si la promesa se resuelve.
 .catch() captura el error si se rechaza.
 */
+miPromesa
+  .then((resultado) => {
+    console.log('THEN: ', resultado);
+  })
+  .catch((error) => {
+    console.log('CATH: ', error);
+  });
 
 /* ============================================================
 3️⃣ ASYNC / AWAIT
@@ -54,6 +90,21 @@ Una Promesa representa un valor que puede estar:
 async convierte una función en asíncrona.
 await detiene la ejecución hasta que la promesa se resuelva.
 */
+
+function obtenerDatosSimulados(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            const exito=Math.random() > 0.5; //true o false
+            if (exito) {
+                console.log("La operación se realizó de manera exitosa")
+            }else{
+                console.log("Operación fallida")
+            }
+            },2000)
+        })
+    }
+async function ejecutar
+
 
 /* ============================================================
 4️⃣ MANEJO DE ERRORES CON TRY/CATCH
