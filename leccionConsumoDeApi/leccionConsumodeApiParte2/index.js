@@ -47,45 +47,11 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  * Las respuestas suelen venir en JSON.
  ********************************************************************/
 
-async function buscarClima(ciudad) {
-  if (!ciudad) {
-    console.warn('Ciudad requerida');
-    return;
-  }
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}&units=metric`;
-
-  try {
-    const response = await fetch(url);
-
-    // Validación de códigos HTTP
-    if (!response.ok) {
-      manejarErroresHTTP(response.status);
-      return;
-    }
-
-    const data = await response.json();
-    mostrarClima(data);
-  } catch (error) {
-    console.error('Error de red o servidor:', error);
-  }
-}
-
 /********************************************************************
  * 4️⃣ PROCESAMIENTO DE RESPUESTA
  *
  * Manipulamos el JSON y lo integramos al DOM.
  ********************************************************************/
-
-function mostrarClima(data) {
-  console.log(`
-    Ciudad: ${data.name}
-    País: ${data.sys.country}
-    Temp: ${data.main.temp}°C
-    Viento: ${data.wind.speed} m/s
-    Estado: ${data.weather[0].description}
-  `);
-}
 
 /********************************************************************
  * 5️⃣ CÓDIGOS DE ESTADO HTTP
@@ -99,18 +65,6 @@ function mostrarClima(data) {
  * 429 → Too Many Requests
  * 500 → Server Error
  ********************************************************************/
-
-function manejarErroresHTTP(status) {
-  if (status === 404) {
-    console.error('Ciudad no encontrada');
-  } else if (status === 401) {
-    console.error('Error de autenticación (API Key)');
-  } else if (status === 429) {
-    console.error('Límite de peticiones alcanzado');
-  } else {
-    console.error('Error HTTP:', status);
-  }
-}
 
 /********************************************************************
  * 6️⃣ LÍMITES Y RESTRICCIONES
@@ -131,33 +85,11 @@ function manejarErroresHTTP(status) {
  * Útil ante fallos temporales o sobrecarga.
  ********************************************************************/
 
-function fetchConReintento(url, intentos = 3) {
-  return fetch(url).catch((error) => {
-    if (intentos <= 1) throw error;
-    return new Promise((resolve) =>
-      setTimeout(() => resolve(fetchConReintento(url, intentos - 1)), 1000)
-    );
-  });
-}
-
 /********************************************************************
  * 8️⃣ GEOLOCALIZACIÓN (MEJORA UX)
  *
  * Permite obtener clima sin escribir ciudad.
  ********************************************************************/
-
-function obtenerClimaPorGeolocalizacion() {
-  navigator.geolocation.getCurrentPosition((position) => {
-    const { latitude, longitude } = position.coords;
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => mostrarClima(data))
-      .catch((err) => console.error(err));
-  });
-}
 
 /********************************************************************
  * 9️⃣ BUENAS PRÁCTICAS
