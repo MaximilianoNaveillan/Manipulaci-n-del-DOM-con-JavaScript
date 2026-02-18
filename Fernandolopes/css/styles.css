@@ -9,14 +9,14 @@ body {
   max-width: 600px;
   margin: 40px auto;
   padding: 0 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0c248b 0%, #832fd6 100%);
   min-height: 100vh;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 24px;
-  color: #ffffff;
+  color: #c28181;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -25,7 +25,7 @@ form {
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(189, 98, 98, 0.95);
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -34,7 +34,7 @@ form {
 input[type='text'] {
   flex: 1;
   padding: 12px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #4a79d8;
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.3s ease;
@@ -43,7 +43,7 @@ input[type='text'] {
 input[type='text']:focus {
   outline: none;
   border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(68, 80, 136, 0.1);
 }
 
 button {
@@ -52,8 +52,8 @@ button {
   border: none;
   border-radius: 8px;
   font-weight: 600;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #10268a 0%, #6a5a7a 100%);
+  color: rgb(202, 110, 110);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -61,7 +61,7 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(106, 110, 128, 0.4);
 }
 
 /* Lista de tareas */
@@ -103,19 +103,19 @@ li button {
 
 /* Botón cambiar estado (verde) */
 li button:nth-child(2) {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #10b981 0%, #59917f 100%);
   color: white;
 }
 
 li button:nth-child(2):hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 12px rgba(90, 128, 115, 0.4);
 }
 
 /* Botón eliminar (rojo) */
 li button:nth-child(3) {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  color: white;
+  background: linear-gradient(135deg, #ef4444 0%, #740202 100%);
+  color: rgb(230, 224, 224);
 }
 
 li button:nth-child(3):hover {
@@ -127,12 +127,12 @@ li button:nth-child(3):hover {
 li.completada {
   opacity: 0.85;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  border-color: #059669;
+  border-color: #31886c;
 }
 
 li.completada span {
   text-decoration: line-through;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(119, 36, 36, 0.95);
 }
 
 li:hover {
