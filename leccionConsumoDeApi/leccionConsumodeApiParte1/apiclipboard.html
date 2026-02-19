@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+  <!-- Define el idioma del documento -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Permite caracteres especiales como tildes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Adaptación a móviles -->
+    <title>API Portapapeles</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Contenedor principal para centrar todo -->
+    <div class="contenedor">
+      <!-- Título principal centrado -->
+      <h1>API PORTAPAPELES</h1>
+
+      <!-- Input donde el usuario escribe el texto -->
+      <input type="text" id="textoCopiar" placeholder="Escribe un texto aquí" />
+
+      <!-- Botón para copiar el texto -->
+      <button id="btnCopiar">Copiar texto</button>
+
+      <!-- Input donde se pegará el texto -->
+      <input type="text" id="textoPegar" placeholder="Aquí se pegará el texto" />
+
+      <!-- Botón para pegar desde el portapapeles -->
+      <button id="btnPegar">Pegar texto</button>
+
+      <!-- Área para mostrar mensajes al usuario -->
+      <p id="mensaje"></p>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="apiclipboard.js"></script>
+  </body>
+</html>

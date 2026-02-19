@@ -1,0 +1,57 @@
+/* Aplica estilos generales al body */
+body {
+  font-family: Arial, sans-serif; /* Tipo de letra */
+  background-color: #f4f4f4; /* Color de fondo */
+  display: flex; /* Activa flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  margin: 0; /* Elimina márgenes por defecto */
+}
+
+/* Contenedor principal */
+.contenedor {
+  background: white; /* Fondo blanco */
+  padding: 30px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+  text-align: center; /* Centra el texto */
+  width: 300px; /* Ancho fijo */
+}
+
+/* Estilo del título */
+h1 {
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilo de los inputs */
+input {
+  width: 100%; /* Ocupa todo el ancho */
+  padding: 10px; /* Espacio interno */
+  margin: 10px 0; /* Espacio arriba y abajo */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde gris */
+}
+
+/* Estilo de los botones */
+button {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  margin: 5px 0; /* Separación */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #007bff; /* Color azul */
+  color: white; /* Texto blanco */
+  cursor: pointer; /* Cambia el cursor al pasar */
+}
+
+/* Efecto cuando se pasa el mouse */
+button:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Estilo para mensajes */
+#mensaje {
+  margin-top: 10px; /* Espacio superior */
+  font-weight: bold; /* Texto en negrita */
+}

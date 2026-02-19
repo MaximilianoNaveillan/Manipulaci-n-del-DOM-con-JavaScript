@@ -91,6 +91,7 @@ async convierte una función en asíncrona.
 await detiene la ejecución hasta que la promesa se resuelva.
 */
 
+<<<<<<< HEAD
 function obtenerDatosSimulados(){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
@@ -105,6 +106,72 @@ function obtenerDatosSimulados(){
     }
 async function ejecutar
 
+=======
+function obtenerDatosSimulados() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const exito = Math.random() > 0.5; // true o false
+      if (exito) {
+        resolve('La operación fue realizada exitosamente 👌');
+      } else {
+        reject('operación fallida ✖️');
+      }
+    }, 2000);
+  });
+}
+async function ejecutarAsyncAwit() {
+  try {
+    console.log('🕗 Esperando datos...'); // Pending
+    const resultado = await obtenerDatosSimulados();
+    console.log('RESULTADO: ', resultado);
+  } catch (error) {
+    console.error('Error Capturado: ', error);
+  }
+}
+
+ejecutarAsyncAwit();
+
+// obtenerDatosSimuladosPromise.all()
+// Método que permite ejecutar varias promesas en paralelo y espera a que todas se resuelvan.
+
+/* 
+Primise.all([premesa1, promesa2, promesa3])
+    .then(()=>{
+        // Se ejecutaran si TODAS las promesas se resuelven
+    })
+    .catch((error)=>{
+        // Se ejecutara si ALGUNA promesa falla    
+    })
+
+*/
+
+function cargaDeUsuarios() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve('Usuarios cargados'), 5000);
+  });
+}
+
+function cargaDePedidos() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve('Pedidos cargados'), 1000);
+  });
+}
+
+function cargaMensajes() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve('Mensajes cargados'), 1000);
+  });
+}
+
+Promise.all([cargaDeUsuarios(), cargaDePedidos(), cargaMensajes()])
+  .then((resultado) => {
+    console.log('👌 todos los datos cargados');
+    console.log(resultado);
+  })
+  .catch(() => {
+    console.error('✖️ Error en promesa', error);
+  });
+>>>>>>> 13ff97ecd418c2891bd19e5b7b043be9ecfd9ac7
 
 /* ============================================================
 4️⃣ MANEJO DE ERRORES CON TRY/CATCH
