@@ -1,26 +1,12 @@
-// libreria
-import { v4 as uuidv4 } from "uuid";
-console.log(uuidv4());
-
 // ----------------------- VARIABLES GLOBALES
 //tareas
 let tareas = [];
 let tareasActivas = [];
 
-// MODAL
-let modalIsOn = false;
-
-// ----------------------- FUNCIONES MODAL
-
-const isChangeModal = () => {
-  modalIsOn = !modalIsOn;
-  return modalIsOn;
-}
-
 //--------------- CLASE TAREA
 class Tarea {
   constructor(descripcion, estado = true) {
-    this.id = uuidv4();
+    this.id = Date.now();
     this.descripcion = descripcion;
     this.estado = estado;
   }
@@ -72,26 +58,51 @@ Tarea.prototype.borrarTarea = function () {
 
 // QUERY SELECTOR
 const containerCards = document.querySelector(".container-cards");
+
+//FORMULARIO
+//tarea
+const formularioTarea = document.querySelector(".formTarea");
+const inputTarea = document.querySelector(".input-01-tarea");
+
+//btns
 const btnCrearTarea = document.querySelector(".btnCrearTarea");
-const ModalCrearTarea = document.querySelector(".modalCrearTarea");
+
+//modals
+const ModalCrearTarea = document.querySelector(".modal-01");
 
 //EVENTO QUERY SELECTOR
 btnCrearTarea.addEventListener("click", () => {
-  
-})
+  ModalCrearTarea.classList.toggle("modalOn");
+});
 
+formularioTarea.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const desc = inputTarea.value.trim();
+
+  if (!desc) return alert("Debes ingresar una tarea");
+
+  const nuevaTarea = new Tarea(desc);
+
+  nuevaTarea.guardarTarea();
+  inputTarea.value = "";
+  ModalCrearTarea.classList.remove("modalOn");
+  mostrarTareas();
+});
 
 //QUERY INNERHTML
 const mostrarTareas = () => {
   containerCards.innerHTML = tareasActivas
-    .map((tarea) => `
-      <div class="card">
+    .map(
+      (tarea) => `
+      <div class="card" data-id="${tarea.id}">
+      <button class="btnBorrar">X</button>
         <p>${tarea.descripcion}</p>
         <div class="actions">
           <button class="btnEditar">Editar</button>
-          <button class="btnBorrar">Borrar</button>
+          <button class="btnCompletar">Estado</button>
         </div>
       </div>
-    `)
+    `,
+    )
     .join("");
 };
