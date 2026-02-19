@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Geo + LocalStorage</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Nuestro CSS -->
+    <link href="styles1.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 text-primary mb-3 app-title">📍 Geolocalización + LocalStorage</h1>
+          <p class="lead text-muted app-subtitle">
+            Obtén tu ubicación GPS y guárdala automáticamente.
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <!-- BOTONES -->
+        <div class="col-md-6 col-lg-4">
+          <div class="btn-group-vertical btn-group-lg w-100 app-buttons">
+            <button id="btn" class="btn btn-primary btn-lg mb-2">
+              <i class="fas fa-map-marker-alt mr-2"></i>Obtener GPS
+            </button>
+            <button id="btnCache" class="btn btn-info btn-lg mb-2">
+              <i class="fas fa-history mr-2"></i>Ver guardada
+            </button>
+            <button id="btnClear" class="btn btn-outline-danger btn-lg">
+              <i class="fas fa-trash mr-2"></i>Limpiar
+            </button>
+          </div>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div class="col-md-6 col-lg-8">
+          <div class="card result-box">
+            <div class="card-header">
+              <h5 class="mb-0 d-flex align-items-center">
+                <i class="fas fa-chart-line mr-2"></i>Resultado
+              </h5>
+            </div>
+            <div class="card-body">
+              <p id="msg" class="text-muted mb-3 font-weight-bold app-status"></p>
+              <pre id="out" class="small mb-0 app-output">Cargando...</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="alert alert-success app-info">
+            <i class="fas fa-check-circle mr-2"></i>✅ Listo para usar
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS AL FINAL DEL BODY (IMPORTANTE!) -->
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- NUESTRO JS ÚLTIMO -->
+    <script src="app2.js"></script>
+  </body>
+</html>

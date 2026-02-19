@@ -1,0 +1,17 @@
+.app-output {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  max-height: 300px;
+  overflow: auto;
+}
+.app-buttons .btn {
+  transition: all 0.2s;
+}
+.app-buttons .btn:hover {
+  transform: translateY(-2px);
+}
+.result-box {
+  border-left: 4px solid #007bff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
