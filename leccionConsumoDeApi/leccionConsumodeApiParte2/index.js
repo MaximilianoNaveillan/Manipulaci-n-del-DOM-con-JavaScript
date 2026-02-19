@@ -35,7 +35,7 @@
  * 3. Incluirla en la URL o headers
  ********************************************************************/
 
-const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
+const API_KEY = '6c928b976192d3cc2d0d05519417c274'; // ⚠ No exponer claves reales en producción
 
 /********************************************************************
  * 3️⃣ SOLICITANDO DATOS A UNA API (OpenWeather)
