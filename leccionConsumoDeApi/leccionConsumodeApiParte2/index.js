@@ -35,7 +35,8 @@
  * 3. Incluirla en la URL o headers
  ********************************************************************/
 
-const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
+require('dotenv').config();
+const API_KEY = process.env.API_KEY; // ⚠ No exponer claves reales en producción
 
 /********************************************************************
  * 3️⃣ SOLICITANDO DATOS A UNA API (OpenWeather)
@@ -46,13 +47,37 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  *
  * Las respuestas suelen venir en JSON.
  ********************************************************************/
+async function buscarClima(ciudad) {
+  if (!ciudad) {
+    console.warn('Ciudad requerida');
+  }
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}&units=metric`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      manejarErroresHTTP(response.status);
+      return;
+    }
+    const data = await response.json();
+    mostrarClima(data);
+  } catch (error) {
+    console.error('Error de red o servidor:', error);
+  }
+}
 
 /********************************************************************
  * 4️⃣ PROCESAMIENTO DE RESPUESTA
  *
  * Manipulamos el JSON y lo integramos al DOM.
  ********************************************************************/
+function mostrarClima(data) {
+    console.log("
+        Ciudad:${},
+        Pais:${},
 
+
+    ")
+}
 /********************************************************************
  * 5️⃣ CÓDIGOS DE ESTADO HTTP
  *
