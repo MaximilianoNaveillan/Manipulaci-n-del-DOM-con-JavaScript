@@ -4,14 +4,25 @@
   box-sizing: border-box;
 }
 
-:root{
-  --bg-main: #000;
-  --color-main: #fff;
+:root {
+  --yt-red: #FF0000;
+  --yt-red-dark: #CC0000;
+
+  --yt-bg-main: #0F0F0F;
+  --yt-bg-secondary: #181818;
+  --yt-bg-hover: #272727;
+
+  --yt-text-main: #FFFFFF;
+  --yt-text-secondary: #AAAAAA;
+
+  --yt-blue: #3EA6FF;
+
+  --br-button: 15px;
 }
 
 .body{
-  background-color: var(--bg-main);
-  color: var(--color-main);
+  background-color: var(--yt-bg-main);
+  color: var(--yt-text-main);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,8 +31,9 @@
 
 /* header */
 .header{
-  background-color: rebeccapurple;
   padding: 10px 10px;
+  border-bottom: var(--yt-bg-secondary) solid 1px;
+  margin-bottom: 10px;
 }
 
 .menu{
@@ -35,11 +47,17 @@
 .btnCrearTarea{
   background-color: transparent;
   border: none;
-  color: var(--color-main);
+  color: var(--yt-text-main);
   cursor: pointer;
-  border: 1px solid var(--color-main);
+  background-color: var(--yt-bg-hover);
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: var(--br-button);
+  transition: 0.2s ease-in-out all;
+}
+
+.btnCrearTarea:hover{
+  background-color: var(--yt-red-dark);
+  color: var(--yt-text-main);
 }
 
 header > nav{
@@ -57,8 +75,29 @@ li > a {
 
 /* main */
 .main{
-  background-color: red;
-  flex-grow: 1;
+  flex: 1;            /* ocupa espacio disponible */
+  overflow-y: auto;   /* 🔥 aquí vive el scroll */
+  padding: 5px;
+}
+
+.main::-webkit-scrollbar {
+  width: 8px;
+  
+}
+
+.main::-webkit-scrollbar-track {
+  background: var(--yt-bg-main);
+  
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: var(--yt-bg-hover);
+  border-radius: 10px;
+  
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+  background: var(--yt-blue);
 }
 
 /*MODAL-01*/
@@ -78,9 +117,19 @@ li > a {
 }
 
 .modal-01-container{
-  background-color: var(--bg-main);
+  background-color: var(--yt-bg-secondary);
   padding: 20px;
   border-radius: 5px;
+  width: 100%;
+  max-width: 350px;
+  transition: 0.5s ease-in-out all;
+}
+
+.modal-title{
+  color: var(--yt-text-main);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .input-01-tarea{
@@ -90,6 +139,41 @@ li > a {
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 10px;
+  border-top-left-radius: var(--br-button);
+  border-bottom-left-radius: var(--br-button);
+  margin-left: 15px;
+}
+
+.modal-01-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btnSubmitTarea{
+  all: unset;
+  background-color: var(--yt-blue);
+  color: var(--yt-text-main);
+  padding: 5px 10px;
+  border-top-right-radius: var(--br-button);
+  border-bottom-right-radius: var(--br-button);
+  cursor: pointer;
+}
+
+.btnCerrarModal{
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--yt-text-main);
+  font-size: 25px;
+  transition: 0.2s ease-in-out all;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.btnCerrarModal:hover{
+  color: var(--yt-red);
 }
 
 .modalOn{
@@ -98,7 +182,6 @@ li > a {
 /* CARDS*/
 
 .container-cards{
-  background-color: lightblue;
   width: 100%;
   padding: 20px;
 
@@ -108,25 +191,95 @@ li > a {
 }
 
 .card{
+  max-width: 380px;
   position: relative;
   background-color: #111;
   border: 1px solid #333;
-  padding: 20px;
-  border-radius: 10px;
-
+  border-radius: var(--br-button);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  min-height: 150px;
-
   transition: 0.2s ease;
+  overflow: hidden;
+  border: 1px solid #333;
 }
 
 .card:hover{
   transform: translate3d(-5px, -5px, 0px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 1px var(--yt-bg-hover);
   border-color: #555;
+  border-color: var(--yt-red);
+}
+
+.card-header{
+  background-color: var(--yt-bg-hover);
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 10px;
+}
+
+.btnBorrar{
+border: none;
+cursor: pointer;
+background-color: transparent;
+color: var(--yt-text-main);
+font-size: 25px;
+transition: 0.2s ease-in-out all;
+font-weight: bold
+}
+
+.card-body{
+  padding: 20px;
+  color: var(--yt-text-main);
+  min-width: 100%;
+
+  /* Estilos para el texto*/
+  /* word-wrap: break-word; sirve para que el texto se rompa en varias líneas si es muy largo */
+  word-wrap: break-word;
+  /* word-break: break-word; fuerza que el texto se rompa en varias líneas */
+  overflow-wrap: break-word;
+  /* word-break: break-word; soporte para navegadores antiguos */
+  word-break: break-word;
+}
+
+.actions{
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 10px;
+  gap: 5px;
+  position: relative;
+}
+
+.btnEditar{
+  border: none;
+  cursor: pointer;
+  background-color: var(--yt-bg-hover);
+  color: var(--yt-text-main);
+  padding: 5px 10px;
+  border-bottom-left-radius: var(--br-button);
+  border-top-left-radius: var(--br-button);
+  transition: all  0.2s ease-in-out;
+}
+
+.btnEditar:hover{
+  background-color: var(--yt-red);
+  transform: translateX(-5px );
+}
+
+.btnCompletar{
+  border: none;
+  cursor: pointer;
+  background-color: var(--yt-bg-hover);
+  color: var(--yt-text-main);
+  padding: 5px 10px;
+  border-bottom-right-radius: var(--br-button);
+  border-top-right-radius: var(--br-button);
+  transition: all  0.2s ease-in-out;
+}
+
+.btnCompletar:hover{
+  background-color: var(--yt-blue);
+  transform: translateX(5px );
 }
 
 /* footer */

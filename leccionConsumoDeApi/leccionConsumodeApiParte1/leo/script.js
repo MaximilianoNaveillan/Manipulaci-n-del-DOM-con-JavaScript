@@ -1,7 +1,6 @@
 let textos = [];
 
 //query selector
-
 const formularioText = document.querySelector("#form");
 const contenedor = document.querySelector("#contenedor");
 

@@ -135,7 +135,18 @@ Evento mouseover: - Cambiar estilos dinámicamente
 
 Evento keyup: - Detectar escritura en tiempo real
 
----
+# ⚙️Paso 5: CONSUMO DE APIS CON JAVASCRIPT
+
+Objetivo: Integrar una API externa para mejorar la aplicación.
+
+● Usar `fetch()` para obtener datos de una API de tareas.  
+● Implementar métodos asincrónicos en la clase `GestorTareas` para sincronizar datos.  
+● Utilizar `async/await` para manejar las peticiones.  
+● Manejar errores con `try/catch` y mostrar mensajes en la interfaz.  
+● Guardar y recuperar tareas utilizando `localStorage`.  
+● Sincronizar tareas entre la API y el estado interno de la aplicación.
+
+## **Entrega:** Aplicación funcional con consumo de API implementado, manejo de errores y persistencia de datos en `localStorage`.
 
 # 📌 Qué se Evaluará
 
@@ -157,6 +168,42 @@ Evento keyup: - Detectar escritura en tiempo real
     - Cómo funciona
     - Qué conceptos aplicaste
     - Qué fue lo más desafiante
+
+**Entrega:** Aplicación funcional con consumo de API implementado, manejo de errores y persistencia de datos en `localStorage`.
+
+## ¿Qué vamos a validar? 🔍
+
+● Correcta aplicación de la orientación a objetos.  
+● Uso de ES6+ en la implementación del código.  
+● Interactividad lograda a través del manejo de eventos.  
+● Correcto manejo de asincronía.  
+● Implementación y validación del consumo de APIs.
+
+---
+
+## Referencias 🦺
+
+● MDN JavaScript  
+● Guía de ECMAScript 6  
+● JSONPlaceholder API
+
+---
+
+## Recursos 🎁
+
+● POO en JavaScript - Artículo  
+● fetch() y manejo de promesas - Documentación  
+● Ejemplo de aplicación en GitHub
+
+---
+
+Pág. 4
+
+## Entregables ✅
+
+● Código fuente documentado.  
+● Demostración funcional.  
+● Explicación del código en un informe breve.
 
 ---
 

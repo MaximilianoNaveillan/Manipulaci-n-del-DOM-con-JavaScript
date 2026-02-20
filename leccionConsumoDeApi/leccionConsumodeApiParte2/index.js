@@ -34,8 +34,10 @@
  * 2. Obtener API Key
  * 3. Incluirla en la URL o headers
  ********************************************************************/
-
-const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
+//require('dotenv').config();
+//const API_KEY = process.env.API_KEY;
+const API_KEY = '-----';
+// ⚠ No exponer claves reales en producción
 
 /********************************************************************
  * 3️⃣ SOLICITANDO DATOS A UNA API (OpenWeather)
@@ -46,13 +48,39 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  *
  * Las respuestas suelen venir en JSON.
  ********************************************************************/
+async function buscarClima(ciudad) {
+  if (!ciudad) {
+    console.warn('Ciudad requerida');
+  }
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${API_KEY}&units=metric`;
+  try {
+    const response = await fetch(url);
+    console.log(response);
+    if (!response.ok) {
+      manejarErroresHTTP(response.status);
+      return;
+    }
+    const data = await response.json();
+    mostrarClima(data);
+  } catch (error) {
+    console.error('Error de red o servidor:', error);
+  }
+}
 
 /********************************************************************
  * 4️⃣ PROCESAMIENTO DE RESPUESTA
  *
  * Manipulamos el JSON y lo integramos al DOM.
  ********************************************************************/
-
+function mostrarClima(data) {
+  console.log(`
+    Ciudad:${data.name},
+    País:${data.sys.country},
+    Temp:${data.main.temp} °C,
+    Viento:${data.wind.speed} k/s,
+    Estado:${data.weather[0].description},
+    `);
+}
 /********************************************************************
  * 5️⃣ CÓDIGOS DE ESTADO HTTP
  *
@@ -65,6 +93,18 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  * 429 → Too Many Requests
  * 500 → Server Error
  ********************************************************************/
+
+function manejarErroresHTTP(status) {
+  if (status === 404) {
+    console.error('Ciudad no encontrada');
+  } else if (status === 401) {
+    console.error('Error de autentiación');
+  } else if (status === 429) {
+    console.error('Límite de peticiones alcanzado');
+  } else {
+    console.error('Error HTTP: ', status);
+  }
+}
 
 /********************************************************************
  * 6️⃣ LÍMITES Y RESTRICCIONES
@@ -84,13 +124,31 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  *
  * Útil ante fallos temporales o sobrecarga.
  ********************************************************************/
+function fetchConReintento(url, intentos = 3) {
+  return fetch(url).catch((error) => {
+    if (intentos <= 1) throw error;
+    return new Promise(
+      (resolve) => setTimeout(() => resolve(fetchConReintento(url, intentos - 1)), 1000) // RECURSIVE
+    );
+  });
+}
 
 /********************************************************************
  * 8️⃣ GEOLOCALIZACIÓN (MEJORA UX)
  *
  * Permite obtener clima sin escribir ciudad.
  ********************************************************************/
-
+function obtenerClimaPorGeolocalizacion() {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const { latitude, longitude } = position.coords; // destructuración
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => mostrarClima(data))
+      .catch((err) => console.error(err));
+  });
+}
+obtenerClimaPorGeolocalizacion();
 /********************************************************************
  * 9️⃣ BUENAS PRÁCTICAS
  *
@@ -133,5 +191,5 @@ const API_KEY = 'TU_API_KEY'; // ⚠ No exponer claves reales en producción
  * DEMO DE PRUEBA
  ********************************************************************/
 
-// buscarClima("Buenos Aires");
+buscarClima('Gotham');
 // obtenerClimaPorGeolocalizacion();

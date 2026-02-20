@@ -20,7 +20,7 @@
  * En el desarrollo web:
  * Navegador (Cliente)  →  Servidor  →  Base de Datos
  *
- * Las APIs permiten obtener datos sin recargar la página.
+ * Las APIs fetch permiten obtener datos sin recargar la página.
  ********************************************************************/
 
 /********************************************************************
@@ -48,7 +48,7 @@
  ********************************************************************/
 
 /********************************************************************
- * 4️⃣ MÉTODOS HTTP
+ * 4️⃣ MÉTODOS HTTP (CRUD)
  *
  * GET    → Obtener datos
  * POST   → Enviar datos
@@ -77,6 +77,36 @@
  * Método tradicional para hacer solicitudes HTTP.
  * Usa eventos y callbacks.
  ********************************************************************/
+/* 
+{ --> JSON
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+}
+{ --> OBJ JS
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+}
+*/
+function loadUsersWithXHR() {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      const user = JSON.parse(xhr.responseText);
+      renderUsers(user);
+    } else {
+      console.error('Error en la solicitud XHR');
+    }
+  };
+
+  xhr.onerror = function () {
+    console.log('Error de red');
+  };
+  xhr.send();
+}
 
 /********************************************************************
  * ================================================================
@@ -85,6 +115,21 @@
  *
  * Método moderno basado en Promesas.
  ********************************************************************/
+function loadUserWithFetch() {
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then((respose) => {
+      if (!respose.ok) {
+        throw new Error('Error en la solicitud');
+      }
+      return respose.json();
+    })
+    .then((users) => {
+      renderUsers(users);
+    })
+    .catch((error) => {
+      console.log('Error con Fetch: ', error);
+    });
+}
 
 /********************************************************************
  * ================================================================
@@ -94,11 +139,40 @@
  * Hace el código más legible.
  ********************************************************************/
 
+async function loadUserAsync() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
+    }
+    const users = await response.json();
+    renderUsers(users);
+  } catch (error) {
+    console.log('Error async/await: ', error);
+  }
+}
+
 /********************************************************************
  * ================================================================
  * 9️⃣ RENDERIZAR DATOS EN EL DOM
  * ================================================================
  ********************************************************************/
+
+function renderUsers(users) {
+  // document.getelementById("users")
+  const usersDiv = document.querySelector('#users');
+  usersDiv.innerHTML = '';
+  users.forEach((user) => {
+    const card = document.createElement('div');
+    card.className = 'user-card';
+    card.innerHTML = `
+    <h3>${user.name}</h3>
+    <p>${user.email}</p>
+    `;
+    usersDiv.appendChild(card);
+  });
+}
 
 /********************************************************************
  * ================================================================
@@ -108,9 +182,47 @@
 
 /* POST - Crear recurso */
 
+async function createUser() {
+  const config = {
+    method: 'POST',
+    header: {
+      'Content-type': 'aplication/json',
+    },
+    body: JSON.stringify({
+      name: 'Juan Pérez',
+      email: 'juan@email.com',
+    }),
+  };
+  const response = await fetch('https://jsonplaceholder.typicode.com/users', config);
+  const data = await response.json();
+  console.log('Usuario creado:', data);
+}
+
 /* PUT - Actualizar recurso */
 
+async function updateUser() {
+  const config = {
+    method: 'PUT',
+    header: {
+      'Content-type': 'aplication/json',
+    },
+    body: JSON.stringify({
+      name: 'Nombre Actualizado',
+    }),
+  };
+  const response = await fetch('https://jsonplaceholder.typicode.com/users/1', config);
+  const data = await response.json();
+  console.log('Nombre actualizado:', data);
+}
+
 /* DELETE - Eliminar recurso */
+
+async function deleteUser() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users/3', {
+    method: 'DELETE',
+  });
+  console.log('Usuario eliminado: ', response.status);
+}
 
 /********************************************************************
  * ================================================================
