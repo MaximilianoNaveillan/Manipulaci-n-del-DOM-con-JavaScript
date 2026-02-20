@@ -36,7 +36,7 @@
  ********************************************************************/
 //require('dotenv').config();
 //const API_KEY = process.env.API_KEY;
-const API_KEY = '6c928b976192d3cc2d0d05519417c274';
+const API_KEY = '-----';
 // ⚠ No exponer claves reales en producción
 
 /********************************************************************
