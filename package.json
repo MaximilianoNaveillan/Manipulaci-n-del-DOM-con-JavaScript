@@ -1,4 +1,30 @@
 {
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  },
+  "name": "demo-dom",
+  "version": "1.0.0",
+  "description": "El Departamento de Desarrollo Web necesita desarrollar una aplicación interactiva para gestionar tareas utilizando JavaScript moderno (ES6+), aplicando:",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximilianoNaveillan/Manipulaci-n-del-DOM-con-JavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MaximilianoNaveillan/Manipulaci-n-del-DOM-con-JavaScript/issues"
+  },
+  "homepage": "https://github.com/MaximilianoNaveillan/Manipulaci-n-del-DOM-con-JavaScript#readme"
+}
+
+{
   "name": "manipulaci-n-del-dom-con-javascript",
   "version": "1.0.0",
   "description": "El Departamento de Desarrollo Web necesita desarrollar una aplicación\r interactiva para gestionar tareas utilizando JavaScript moderno (ES6+),\r aplicando:",
