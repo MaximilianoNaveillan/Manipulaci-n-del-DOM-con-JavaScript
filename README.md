@@ -209,3 +209,16 @@ Pág. 4
 
 🔥 Este proyecto será una pieza clave en tu portafolio como
 desarrollador JavaScript.
+
+🤔ayuda.
+Puedes usar la API: [ ir a Jsonplaceholder ](https://jsonplaceholder.typicode.com/)
+
+GET https://jsonplaceholder.typicode.com/todos
+
+GET https://jsonplaceholder.typicode.com/todos/1
+
+POST https://jsonplaceholder.typicode.com/todos
+
+PUT https://jsonplaceholder.typicode.com/todos/1
+
+DELETE https://jsonplaceholder.typicode.com/todos/1

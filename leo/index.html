@@ -14,15 +14,9 @@
 
         <div>
           <ul class="menu">
-            <li>
-              <a href="#">Todas</a>
-            </li>
-            <li>
-              <a href="#">Pendientes</a>
-            </li>
-            <li>
-              <a href="#">Completadas</a>
-            </li>
+            <li><a href="#" data-filter="todas">Todas</a></li>
+            <li><a href="#" data-filter="pendientes">Pendientes</a></li>
+            <li><a href="#" data-filter="completadas">Completadas</a></li>
           </ul>
         </div>
       </nav>
@@ -32,12 +26,18 @@
       <h3>TAREAS</h3>
       <section class="container-cards"></section>
 
-      <!-- MODAL-->
+      <!-- MODAL CREAR TAREA-->
       <div class="modal-01">
         <div class="modal-01-container">
           <div class="modal-01-header">
             <h2 class="modal-title">Crear Tarea</h2>
-            <button type="button" class="btnCerrarModal" onclick="cerrarModal01()">X</button>
+            <button
+              type="button"
+              class="btnCerrarModal"
+              onclick="cerrarModal01()"
+            >
+              X
+            </button>
           </div>
           <div class="modal-01-body">
             <form class="formTarea">
@@ -48,6 +48,28 @@
         </div>
       </div>
     </main>
+
+    <!-- MODAL EDITAR TAREA-->
+    <div class="modal-02">
+      <div class="modal-02-container">
+        <div class="modal-02-header">
+          <h2 class="modal-title">Editar Tarea</h2>
+          <button
+            type="button"
+            class="btnCerrarModal02"
+            onclick="cerrarModal02()"
+          >
+            X
+          </button>
+        </div>
+        <div class="modal-02-body">
+          <form class="formEditarTarea">
+            <input type="text" placeholder="Tarea" class="input-02-tarea" />
+            <button type="submit" class="btnSubmitEditarTarea">Editar</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <!-- Footer -->
     <footer class="footer">
       <h2>footer</h2>

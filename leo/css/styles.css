@@ -176,6 +176,38 @@ li > a {
   color: var(--yt-red);
 }
 
+/*-- MODAL-02 --*/
+
+.modal-02{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.288);
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out all;
+}
+
+.modal-02-container{
+  background-color: var(--yt-bg-secondary);
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 350px;
+  transition: 0.5s ease-in-out all;
+}
+
+.modal-02-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .modalOn{
   display: flex;
 }
@@ -248,6 +280,7 @@ font-weight: bold
   padding: 5px 10px;
   gap: 5px;
   position: relative;
+  transition: all 0.2s ease-in-out;
 }
 
 .btnEditar{
@@ -280,6 +313,16 @@ font-weight: bold
 .btnCompletar:hover{
   background-color: var(--yt-blue);
   transform: translateX(5px );
+}
+
+.completada{
+   border: none;
+  cursor: pointer;
+  background-color: #3CB371;
+  padding: 5px 10px;
+  border-bottom-right-radius: var(--br-button);
+  border-top-right-radius: var(--br-button);
+
 }
 
 /* footer */
