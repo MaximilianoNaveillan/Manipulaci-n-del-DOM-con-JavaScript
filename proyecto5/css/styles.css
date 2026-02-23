@@ -1,0 +1,146 @@
+/* CSS Compilado desde Sass con metodología BEM */
+:root {
+  --color-primary: #4a90e2;
+  --color-secondary: #f39c12;
+  --color-danger: #e74c3c;
+  --color-success: #2ecc71;
+  --color-bg: #f4f7f6;
+  --color-text: #2c3e50;
+  --color-white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.task-app {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 500px;
+}
+
+.task-app__title {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.task-app__form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.task-app__form-input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.task-app__form-input:focus {
+  border-color: var(--color-primary);
+}
+
+.task-app__form-button {
+  padding: 12px 20px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.task-app__form-button:hover {
+  background-color: #357abd;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  animation: fadeIn 0.3s ease;
+}
+
+.task-list__item:last-child {
+  border-bottom: none;
+}
+
+.task-list__item--completed .task-list__text {
+  text-decoration: line-through;
+  color: #95a5a6;
+}
+
+.task-list__text {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.task-list__actions {
+  display: flex;
+  gap: 5px;
+}
+
+.task-list__button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.task-list__button:hover {
+  opacity: 0.9;
+}
+
+.task-list__button:active {
+  transform: scale(0.95);
+}
+
+.task-list__button--status {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.task-list__button--edit {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.task-list__button--delete {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
