@@ -13,19 +13,29 @@
         <button type="button" class="btnCrearTarea">Crear Tarea +</button>
 
         <div>
-          <ul class="menu">
-            <li><a href="#" data-filter="todas">Todas</a></li>
-            <li><a href="#" data-filter="pendientes">Pendientes</a></li>
-            <li><a href="#" data-filter="completadas">Completadas</a></li>
+          <ul class="menu" id="menuTabs">
+            <li>
+              <a href="#" class="nav-item active" data-filter="todas">Todas</a>
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-filter="pendientes"
+                >Pendientes</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-filter="completadas"
+                >Completadas</a
+              >
+            </li>
+
+            <div class="tab-indicator"></div>
           </ul>
         </div>
       </nav>
     </header>
     <!-- Main -->
     <main class="main">
-      <h3>TAREAS</h3>
       <section class="container-cards"></section>
-
       <!-- MODAL CREAR TAREA-->
       <div class="modal-01">
         <div class="modal-01-container">
@@ -72,7 +82,7 @@
     </div>
     <!-- Footer -->
     <footer class="footer">
-      <h2>footer</h2>
+      <h4>Task Flow 2026 @ Todos los derechos reservados</h4>
     </footer>
     <script type="module" src="./js/app.js"></script>
   </body>

@@ -1,5 +1,4 @@
 // bd.js
-
 const getLocalStorage = () => JSON.parse(localStorage.getItem("tasks")) || [];
 
 const setLocalStorage = (tasks) =>
